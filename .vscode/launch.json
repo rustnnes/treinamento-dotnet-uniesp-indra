@@ -1,0 +1,33 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": ".NET Core Launch (console)",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "build",
+			"program": "${workspaceFolder}/console/bin/Debug/net5.0/console.dll",
+			"args": [],
+			"cwd": "${workspaceFolder}/console",
+			"console": "integratedTerminal", // internalConsole
+			"stopAtEntry": false
+		},
+		{
+			"name": ".NET Core Launch (web)",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "build",
+			"program": "${workspaceFolder}/web/bin/Debug/net5.0/web.dll",
+			"args": [],
+			"cwd": "${workspaceFolder}/web",
+			"console": "integratedTerminal", // internalConsole
+			"stopAtEntry": false
+		},
+		{
+			"name": ".NET Core Attach",
+			"type": "coreclr",
+			"request": "attach",
+			"processId": "${command:pickProcess}"
+		}
+	]
+}

@@ -1,0 +1,29 @@
+{
+	"editor.defaultFormatter": "ms-dotnettools.csharp",
+	"editor.formatOnSave": true,
+	"editor.formatOnType": true,
+	"editor.tabSize": 2,
+	"editor.insertSpaces": true,
+	"omnisharp.enableImportCompletion": true,
+	"omnisharp.loggingLevel": "warning",
+	"omnisharp.organizeImportsOnFormat": true,
+	"razor.languageServer.debug": true,
+	"sqltools.connections": [
+		{
+			"mssqlOptions": {
+				"appName": "SQLTools",
+				"useUTC": true,
+				"encrypt": true
+			},
+			"previewLimit": 50,
+			"server": "localhost",
+			"port": 1433,
+			"driver": "MSSQL",
+			"name": "Indra",
+			"database": "master",
+			"username": "sa",
+			"password": "Mudar123!"
+		}
+	],
+	"editor.tabCompletion": "on"
+}
