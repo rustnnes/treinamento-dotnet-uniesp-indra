@@ -1,0 +1,36 @@
+﻿
+
+@model IEnumerable<Backend.Pais>
+@{
+    //var paises = new Backend.PaisRepositorio().ListarTodos();
+}
+
+<h1>Países</h1>
+
+
+@Html.ActionLink("Cadastrar","Create","Pais",null, new {@class = "btn btn-primary" })
+
+<table class="table table-responsive mt-3">
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th></th>
+    </tr>
+    @foreach (var pais in Model)
+    {
+        <tr>
+            <td>@pais.Id</td>
+            <td>@pais.Nome</td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = pais.Id })
+                @if (!pais.Marcas.Any())
+                {
+                    @Html.ActionLink("Excluir", "Delete", new { id = pais.Id }, new { onclick = "return confirm('Deseja realmente excluir?');" })
+                }
+
+
+            </td>
+        </tr>
+    }
+</table>
+
