@@ -9,7 +9,6 @@ namespace Backend {
 			this.context = new FrotaContext();
 		}
 
-
 		public int Atualizar(Pais pais) {
 			this.context.Paises.Update(pais);
 			return this.context.SaveChanges();

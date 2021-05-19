@@ -17,7 +17,8 @@ namespace Backend {
 					return carro;
 				}
 				throw new Exception($"Nenhum registro localizado com o Id:{id}");
-			} catch (Exception ex) {
+			}
+			catch (Exception ex) {
 
 				throw new Exception(ex.Message);
 			}
@@ -32,9 +33,9 @@ namespace Backend {
 					return carros.ToList();
 				}
 				throw new Exception($"Nenhum carro localizado com o nome {nome}");
-			} catch (Exception ex) {
-
-				throw;
+			}
+			catch (Exception ex) {
+				throw new Exception($"Failed to get: {ex.Message}");
 			}
 		}
 
@@ -45,7 +46,8 @@ namespace Backend {
 					return carros.ToList();
 				}
 				throw new Exception($"Nenhum veículo encontrado com a marca: {marca}");
-			} catch {
+			}
+			catch {
 				throw;
 			}
 		}
@@ -58,7 +60,8 @@ namespace Backend {
 					return carros.ToList();
 				}
 				throw new Exception($"Nenhum veículo encontrado com a marca: {pais}");
-			} catch {
+			}
+			catch {
 				throw;
 			}
 		}
@@ -70,8 +73,8 @@ namespace Backend {
 			try {
 				this.context.Carros.Add(carro);
 				this.context.SaveChanges();
-			} catch (Exception ex) {
-
+			}
+			catch (Exception ex) {
 				throw new Exception($"Falha ao inserir um carro:{ex.Message}");
 			}
 		}
@@ -81,10 +84,9 @@ namespace Backend {
 				foreach (var carro in carros) {
 					this.context.Carros.Add(carro);
 				}
-
 				this.context.SaveChanges();
-			} catch (Exception ex) {
-
+			}
+			catch (Exception ex) {
 				throw new Exception($"Falha ao inserir um carro:{ex.Message}");
 			}
 		}
@@ -93,8 +95,8 @@ namespace Backend {
 			try {
 				this.context.Update(carro);
 				this.context.SaveChanges();
-			} catch (Exception ex) {
-
+			}
+			catch (Exception ex) {
 				throw new Exception($"Falha ao atualizar: {ex.Message}");
 			}
 		}
@@ -103,8 +105,8 @@ namespace Backend {
 			try {
 				this.context.Carros.Remove(carro);
 				this.context.SaveChanges();
-			} catch (Exception ex) {
-
+			}
+			catch (Exception ex) {
 				throw new Exception($"Falha ao excluir: {ex.Message}");
 			}
 		}
