@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    hostname: sql1
+    ports:
+      - "1433:1433"
+    volumes:
+      - .:/data
+    environment:
+      - "ACCEPT_EULA=Y"
+      - "SA_PASSWORD=Mudar123!"
