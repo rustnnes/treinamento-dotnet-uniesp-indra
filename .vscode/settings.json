@@ -20,7 +20,7 @@
 			"port": 1433,
 			"driver": "MSSQL",
 			"name": "Indra",
-			"database": "master",
+			"database": "FrotaDB",
 			"username": "sa",
 			"password": "Mudar123!"
 		}
