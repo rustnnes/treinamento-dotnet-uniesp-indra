@@ -11,7 +11,7 @@ namespace Backend {
 		public DbSet<Pais> Paises { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder) {
-			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+			// modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 		}
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
