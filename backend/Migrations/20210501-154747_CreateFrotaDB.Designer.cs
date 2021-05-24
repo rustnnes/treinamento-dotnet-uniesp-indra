@@ -57,8 +57,7 @@ namespace Backend.Migrations {
 					.HasColumnType("int")
 					.HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-				b.Property<string>("Nome")
-									.HasColumnType("nvarchar(max)");
+				b.Property<string>("Nome").HasColumnType("nvarchar(max)");
 
 				b.HasKey("Id");
 

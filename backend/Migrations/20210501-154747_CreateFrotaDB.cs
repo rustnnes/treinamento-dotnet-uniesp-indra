@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Backend.Migrations {
 	public partial class CreateFrotaDB : Migration {
@@ -72,9 +72,7 @@ namespace Backend.Migrations {
 
 		protected override void Down(MigrationBuilder migrationBuilder) {
 			migrationBuilder.DropTable(name: "Carro");
-
 			migrationBuilder.DropTable(name: "Marca");
-
 			migrationBuilder.DropTable(name: "Pais");
 		}
 	}
