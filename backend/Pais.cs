@@ -10,6 +10,5 @@ namespace Backend {
 		public string Nome { get; set; }
 
 		public virtual ICollection<Marca> Marcas { get; set; }
-
 	}
 }

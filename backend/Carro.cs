@@ -4,9 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Backend {
 	[Table("Carro")]
 	public class Carro : IVeiculo {
-		public Carro() {
-
-		}
+		public Carro() { }
 		public Carro(string cor, string nome, int idMarca) {
 			this.Cor = cor;
 			this.Nome = nome;
@@ -31,6 +29,5 @@ namespace Backend {
 		public string Buzinar(string buzina) {
 			return buzina;
 		}
-
 	}
 }
