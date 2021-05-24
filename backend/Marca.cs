@@ -11,7 +11,8 @@ namespace Backend {
 		public int Id { get; set; }
 		public string Nome { get; set; }
 		public int IdPais { get; set; }
-		[ForeignKey("IdPais")]
+
+		[ForeignKey(nameof(Marca.IdPais))] //"IdPais"
 		public virtual Pais Pais { get; set; }
 		public virtual ICollection<Carro> Carros { get; set; }
 	}
