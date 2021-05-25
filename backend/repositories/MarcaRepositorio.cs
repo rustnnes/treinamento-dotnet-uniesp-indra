@@ -8,49 +8,52 @@ namespace Backend {
 		public MarcaRepositorio() {
 			this.context = new FrotaContext();
 		}
-		public void Adicionar(Marca entidade) {
+		public void adicionar(Marca entidade) {
 			try {
 				this.context.Set<Marca>().Add(entidade);
 				this.context.SaveChanges();
-			} catch (Exception ex) {
+			}
+			catch (Exception ex) {
 
 				throw new Exception($"Falha ao cadastrar: {ex.Message}");
 			}
 		}
 
-		public void AdicionarVarios(List<Marca> entidades) {
+		public void adicionarVarios(List<Marca> entidades) {
 			throw new NotImplementedException();
 		}
 
-		public void Atualizar(Marca entidade) {
+		public void atualizar(Marca entidade) {
 			try {
 				this.context.Set<Marca>().Update(entidade);
 				this.context.SaveChanges();
-			} catch (Exception ex) {
+			}
+			catch (Exception ex) {
 
 				throw new Exception($"Falha ao atualizar: {ex.Message}");
 			}
 		}
 
-		public void Deletar(Marca entidade) {
+		public void deletar(Marca entidade) {
 			try {
 				this.context.Set<Marca>().Remove(entidade);
 				this.context.SaveChanges();
-			} catch (Exception ex) {
+			}
+			catch (Exception ex) {
 
-				throw new Exception($"Não foi possível excluir a marcar {entidade.Nome}: {ex.Message}");
+				throw new Exception($"Não foi possível excluir a marcar {entidade.nome}: {ex.Message}");
 			}
 		}
 
-		public Marca ObterPorId(int id) {
+		public Marca obterPorId(int id) {
 			return this.context.Set<Marca>().Find(id);
 		}
 
-		public List<Marca> ObterPorNome(string nome) {
+		public List<Marca> obterPorNome(string nome) {
 			throw new NotImplementedException();
 		}
 
-		public List<Marca> ObterTodos() {
+		public List<Marca> obterTodos() {
 			return this.context.Set<Marca>().ToList();
 		}
 	}

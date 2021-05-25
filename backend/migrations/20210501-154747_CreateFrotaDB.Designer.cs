@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Backend.Migrations {
 	[DbContext(typeof(FrotaContext))]
-	[Migration("20210501-155711_AddPlacaInCarro")]
-	partial class AddPlacaInCarro {
+	[Migration("20210501-154747_CreateFrotaDB")]
+	partial class CreateFrotaDB {
 		protected override void BuildTargetModel(ModelBuilder modelBuilder) {
 #pragma warning disable 612, 618
 			modelBuilder
@@ -15,61 +15,59 @@ namespace Backend.Migrations {
 				.HasAnnotation("ProductVersion", "5.0.5")
 				.HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-			modelBuilder.Entity("Backend.Carro", b => {
-				b.Property<int>("Id")
+			modelBuilder.Entity("Backend.Veiculo", b => {
+				b.Property<int>("id")
 					.ValueGeneratedOnAdd()
 					.HasColumnType("int")
 					.HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-				b.Property<string>("Cor").HasColumnType("nvarchar(max)");
+				b.Property<string>("cor").HasColumnType("nvarchar(max)");
 
-				b.Property<int>("IdMarca").HasColumnType("int");
+				b.Property<int>("idMarca").HasColumnType("int");
 
-				b.Property<string>("Nome").HasColumnType("nvarchar(max)");
+				b.Property<string>("nome").HasColumnType("nvarchar(max)");
 
-				b.Property<string>("Placa").HasColumnType("nvarchar(max)");
+				b.HasKey("id");
 
-				b.HasKey("Id");
+				b.HasIndex("idMarca");
 
-				b.HasIndex("IdMarca");
-
-				b.ToTable("Carro");
+				b.ToTable("carro");
 			});
 
 			modelBuilder.Entity("Backend.Marca", b => {
-				b.Property<int>("Id")
+				b.Property<int>("id")
 					.ValueGeneratedOnAdd()
 					.HasColumnType("int")
 					.HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-				b.Property<int>("IdPais").HasColumnType("int");
+				b.Property<int>("idPais").HasColumnType("int");
 
-				b.Property<string>("Nome").HasColumnType("nvarchar(max)");
+				b.Property<string>("nome").HasColumnType("nvarchar(max)");
 
-				b.HasKey("Id");
+				b.HasKey("id");
 
-				b.HasIndex("IdPais");
+				b.HasIndex("idPais");
 
-				b.ToTable("Marca");
+				b.ToTable("marks");
 			});
 
 			modelBuilder.Entity("Backend.Pais", b => {
-				b.Property<int>("Id")
+				b.Property<int>("id")
 					.ValueGeneratedOnAdd()
 					.HasColumnType("int")
 					.HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
 				b.Property<string>("Nome").HasColumnType("nvarchar(max)");
 
-				b.HasKey("Id");
+				b.HasKey("id");
 
-				b.ToTable("Pais");
+				b.ToTable("countries");
 			});
 
-			modelBuilder.Entity("Backend.Carro", b => {
+			modelBuilder.Entity("Backend.Veiculo", b => {
 				b.HasOne("Backend.Marca", "Marca")
 					.WithMany()
-					.HasForeignKey("IdMarca")
+					.HasForeignKey("idMarca")
 					.OnDelete(DeleteBehavior.Cascade)
 					.IsRequired();
 
@@ -79,7 +77,7 @@ namespace Backend.Migrations {
 			modelBuilder.Entity("Backend.Marca", b => {
 				b.HasOne("Backend.Pais", "Pais")
 					.WithMany()
-					.HasForeignKey("IdPais")
+					.HasForeignKey("idPais")
 					.OnDelete(DeleteBehavior.Cascade)
 					.IsRequired();
 

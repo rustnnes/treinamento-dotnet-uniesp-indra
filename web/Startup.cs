@@ -16,7 +16,7 @@ namespace TreinamentoWebApp {
 
 		public void ConfigureServices(IServiceCollection services) {
 			services.AddControllersWithViews();
-			services.AddScoped<ICarroServico<Carro>, CarroServico>();
+			services.AddScoped<IVeiculoServico<Veiculo>, VeiculoServico>();
 			services.AddScoped<IPaisServico<Pais>, PaisServico>();
 		}
 

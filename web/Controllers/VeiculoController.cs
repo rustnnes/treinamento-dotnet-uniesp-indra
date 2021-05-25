@@ -6,29 +6,29 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using TreinamentoWebApp.Servicos;
 
 namespace TreinamentoWebApp.Controllers {
-	public class CarroController : Controller {
-		private ICarroServico<Carro> servico;
+	public class VeiculoController : Controller {
+		private IVeiculoServico<Veiculo> servico;
 		private MarcaRepositorio marcaRepositorio;
-		public CarroController(ICarroServico<Carro> servico) {
+		public VeiculoController(IVeiculoServico<Veiculo> servico) {
 			this.marcaRepositorio = new MarcaRepositorio();
 			this.servico = servico;
 		}
-		// GET: CarroController
+		// GET: VeiculoController
 		public ActionResult Index() {
-			var carros = this.servico.ListarOrdenado();
-			return View(carros);
+			var veiculos = this.servico.listarOrdenado();
+			return View(veiculos);
 		}
 
-		// GET: CarroController/Details/5
+		// GET: VeiculoController/Details/5
 		public ActionResult Details(int id) {
 			return View();
 		}
 
-		// GET: CarroController/Create
+		// GET: VeiculoController/Create
 
 		private void CarregarDropMarca() {
-			var marcas = this.marcaRepositorio.ObterTodos()
-				.OrderBy(x => x.Nome)
+			var marcas = this.marcaRepositorio.obterTodos()
+				.OrderBy(x => x.nome)
 				.ToList();
 			var selectMarcas = new SelectList(marcas, "Id", "Nome");
 			ViewBag.selectMarcas = selectMarcas;
@@ -39,21 +39,21 @@ namespace TreinamentoWebApp.Controllers {
 			return View();
 		}
 
-		// POST: CarroController/Create
+		// POST: VeiculoController/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(IFormCollection collection) {
 			try {
 				var id = collection["Id"];
-				var carro = new Carro {
-					Id = string.IsNullOrEmpty(id) ? 0 : int.Parse(id),
-					Cor = collection["Cor"],
-					IdMarca = int.Parse(collection["IdMarca"]),
-					Nome = collection["Nome"],
-					Placa = collection["Placa"]
+				var Veiculo = new Veiculo {
+					id = string.IsNullOrEmpty(id) ? 0 : int.Parse(id),
+					cor = collection["Cor"],
+					idMarca = int.Parse(collection["IdMarca"]),
+					nome = collection["Nome"],
+					placa = collection["Placa"]
 				};
 
-				this.servico.Salvar(carro);
+				this.servico.salvar(Veiculo);
 				return RedirectToAction(nameof(Index));
 			}
 			catch {
@@ -61,14 +61,14 @@ namespace TreinamentoWebApp.Controllers {
 			}
 		}
 
-		// GET: CarroController/Edit/5
+		// GET: VeiculoController/Edit/5
 		public ActionResult Edit(int id) {
-			var carroEdit = this.servico.Obter(id);
+			var VeiculoEdit = this.servico.obter(id);
 			this.CarregarDropMarca();
-			return View("Create", carroEdit);
+			return View("Create", VeiculoEdit);
 		}
 
-		// POST: CarroController/Edit/5
+		// POST: VeiculoController/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public ActionResult Edit(int id, IFormCollection collection) {
@@ -80,13 +80,13 @@ namespace TreinamentoWebApp.Controllers {
 			}
 		}
 
-		// GET: CarroController/Delete/5
+		// GET: VeiculoController/Delete/5
 		public ActionResult Delete(int id) {
-			this.servico.Excluir(id);
+			this.servico.excluir(id);
 			return RedirectToAction("Index");
 		}
 
-		// POST: CarroController/Delete/5
+		// POST: VeiculoController/Delete/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public ActionResult Delete(int id, IFormCollection collection) {

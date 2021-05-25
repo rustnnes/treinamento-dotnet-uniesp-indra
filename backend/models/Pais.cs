@@ -3,12 +3,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Backend {
-	[Table("Pais")]
+	[Table("countries")]
 	public class Pais {
 		[Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		public int Id { get; set; }
-		public string Nome { get; set; }
+		public int id { get; set; }
+		public string nome { get; set; }
 
-		public virtual ICollection<Marca> Marcas { get; set; }
+		public virtual ICollection<Marca> marcas { get; set; }
 	}
 }

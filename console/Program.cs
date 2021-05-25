@@ -9,19 +9,19 @@ namespace TreinamentoApplication {
 			Console.WriteLine("Bem Vindos ao Treinamento .NET");
 
 			//criando uma lista de objetos que implementam a interface IVeiculo
-			var listCarro = new List<Carro>();
+			var listVeiculo = new List<Veiculo>();
 
-			//instanciando um carro invocando o construtor default
-			Carro veiculo = new Carro();
+			//instanciando um Veiculo invocando o construtor default
+			// Veiculo veiculo = new Veiculo();
 
 			//populando a lista...
-			listCarro.Add(new Carro("verde", "fusca", 1));
-			listCarro.Add(new Carro("azul", "fusca", 1));
-			listCarro.Add(new Carro("azul", "vectra", 2));
-			listCarro.Add(new Carro("branco", "gol", 1));
-			//instanciando um objeto carro utilizando um inicializado de objetos
+			listVeiculo.Add(new Veiculo("verde", "fusca", 1));
+			listVeiculo.Add(new Veiculo("azul", "fusca", 1));
+			listVeiculo.Add(new Veiculo("azul", "vectra", 2));
+			listVeiculo.Add(new Veiculo("branco", "gol", 1));
+			//instanciando um objeto Veiculo utilizando um inicializado de objetos
 			//ao invés de invocar um construtor
-			//listCarro.Add(new Carro
+			//listVeiculo.Add(new Veiculo
 			//{
 			//    Cor = "branco",
 			//    Nome = "uno"
@@ -29,40 +29,40 @@ namespace TreinamentoApplication {
 
 			//consulta LINQ no formato method query
 			//Obs.: Atenção para a transformação que está sendo feita através do método Select()
-			var listOrdenada = listCarro
-													.OrderBy(x => x.Cor)
-													.Select(carr => new Moto {
-														Cor = carr.Cor,
-														Nome = carr.Nome
+			var listOrdenada = listVeiculo
+													.OrderBy(x => x.cor)
+													.Select(carr => new Veiculo {
+														cor = carr.cor,
+														nome = carr.nome
 													});
 
 			//consulta LINQ no formato query based
-			var listaOrdenada2 = from list in listCarro
-													 orderby list.Cor
-													 select new Moto {
-														 Cor = list.Cor,
-														 Nome = list.Nome
+			var listaOrdenada2 = from list in listVeiculo
+													 orderby list.cor
+													 select new Veiculo {
+														 cor = list.cor,
+														 nome = list.nome
 													 };
 
 			//iterando sob a lista e imprimindo no console os valores das propriedades dos objetos.
-			var carroRepositorio = new CarroRepositorio();
-			// carroRepositorio.AddCarro(listCarro);
-			// var carro = carroRepositorio.ObterPorId(11);
-			// carro.Cor = "Preto";
-			// carroRepositorio.Atualizar(carro);
+			var VeiculoRepositorio = new VeiculoRepositorio();
+			// VeiculoRepositorio.AddVeiculo(listVeiculo);
+			// var Veiculo = VeiculoRepositorio.ObterPorId(11);
+			// Veiculo.Cor = "Preto";
+			// VeiculoRepositorio.Atualizar(Veiculo);
 			try {
-				// carroRepositorio.AdicionarVarios(listCarro);
-				var carros = carroRepositorio.ObterPorPaisOrigem("alemanha");
-				foreach (var carro in carros) {
-					Console.WriteLine($"{carro.Tipo}: {carro.Cor}");
-					Console.WriteLine($"Nome: {carro.Nome}");
+				// VeiculoRepositorio.AdicionarVarios(listVeiculo);
+				var veiculos = VeiculoRepositorio.obterPorPaisOrigem("alemanha");
+				foreach (var veiculo in veiculos) {
+					Console.WriteLine($"{veiculo.tipo}: {veiculo.cor}");
+					Console.WriteLine($"Nome: {veiculo.nome}");
 				}
 			}
 			catch (Exception ex) {
 				Console.WriteLine(ex.Message);
 			}
 
-			//foreach (var v in listCarro) {
+			//foreach (var v in listVeiculo) {
 			//  Console.WriteLine($"{v.Tipo}: {v.Cor}");
 			//  Console.WriteLine($"Nome: {v.Nome}");
 			//}

@@ -14,7 +14,7 @@ namespace TreinamentoWebApp.Controllers {
 		}
 		// GET: PaisController
 		public ActionResult Index() {
-			var paises = servico.ListarOrdenado();
+			var paises = servico.listarOrdenado();
 			return View(paises);
 		}
 
@@ -35,11 +35,11 @@ namespace TreinamentoWebApp.Controllers {
 			try {
 				var id = collection["Id"];
 				var pais = new Pais {
-					Id = string.IsNullOrEmpty(id) ? 0 : int.Parse(id),
-					Nome = collection["Nome"].ToString().ToUpper()
+					id = string.IsNullOrEmpty(id) ? 0 : int.Parse(id),
+					nome = collection["Nome"].ToString().ToUpper()
 				};
 
-				this.servico.Salvar(pais);
+				this.servico.salvar(pais);
 
 				return RedirectToAction(nameof(Index));
 			}
@@ -50,7 +50,7 @@ namespace TreinamentoWebApp.Controllers {
 
 		// GET: PaisController/Edit/5
 		public ActionResult Edit(int id) {
-			var pais = this.servico.Obter(id);
+			var pais = this.servico.obter(id);
 			return View("Create", pais);
 		}
 
@@ -68,7 +68,7 @@ namespace TreinamentoWebApp.Controllers {
 
 		// GET: PaisController/Delete/5
 		public ActionResult Delete(int id) {
-			this.servico.Excluir(id);
+			this.servico.excluir(id);
 			return RedirectToAction("Index");
 		}
 

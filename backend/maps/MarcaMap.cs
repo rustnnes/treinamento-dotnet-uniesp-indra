@@ -5,27 +5,27 @@ namespace Backend.Maps {
 	public class MarcaMap : IEntityTypeConfiguration<Marca> {
 		public void Configure(EntityTypeBuilder<Marca> builder) {
 			builder.ToTable("Marca");
-			builder.HasKey(x => x.Id);
+			builder.HasKey(x => x.id);
 
 			builder
-				.Property(x => x.Id)
-				.HasColumnName("Id");
+				.Property(x => x.id)
+				.HasColumnName("id");
 
 			builder
-				.Property(x => x.IdPais)
+				.Property(x => x.idPais)
 				.HasColumnName("IdPais")
 				.IsRequired();
 
 			builder
-				.Property(x => x.Nome)
-				.HasColumnName("Nome")
+				.Property(x => x.nome)
+				.HasColumnName("nome")
 				.HasColumnType("varchar(50)")
 				.IsRequired();
 
 			builder
-				.HasOne(x => x.Pais)
+				.HasOne(x => x.pais)
 				.WithMany()
-				.HasForeignKey(x => x.IdPais)
+				.HasForeignKey(x => x.idPais)
 				.IsRequired();
 		}
 	}

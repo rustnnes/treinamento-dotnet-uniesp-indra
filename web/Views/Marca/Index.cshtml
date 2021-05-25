@@ -5,24 +5,24 @@
 @Html.ActionLink("Cadastrar", "Create", "Marca", null, new { @class = "btn btn-primary" })
 <br /><br />
 <table class="table table-responsive">
-  <tr>
-    <th>Id</th>
-    <th>Nome</th>
-    <th>Origem</th>
-    <th></th>
-  </tr>
-  @foreach (var marca in Model) {
-  <tr>
-    <td>@marca.Id</td>
-    <td>@marca.Nome</td>
-    <td>@marca.Pais.Nome</td>
-    <td>
-        @Html.ActionLink("Editar", "Edit", new { id = marca.Id })
-        @if (!marca.Carros.Any()) {
-          @Html.ActionLink("Excluir", "Delete", new { id = marca.Id }, new { onclick = "return confirm('Deseja realmente excluir?');" })
-        }
+	<tr>
+		<th>Id</th>
+		<th>Nome</th>
+		<th>Origem</th>
+		<th></th>
+	</tr>
+	@foreach (var marca in Model) {
+	<tr>
+		<td>@marca.id</td>
+		<td>@marca.nome</td>
+		<td>@marca.pais.nome</td>
+		<td>
+				@Html.ActionLink("Editar", "Edit", new { id = marca.id })
+				@if (!marca.veiculos.Any()) {
+					@Html.ActionLink("Excluir", "Delete", new { id = marca.id }, new { onclick = "return confirm('Deseja realmente excluir?');" })
+				}
 
-    </td>
-  </tr>
-    }
+		</td>
+	</tr>
+		}
 </table>

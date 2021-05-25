@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 namespace TreinamentoWebApp.Servicos {
-	public interface IPaisServico<T> {
+	public interface IVeiculoServico<T> {
 		public void salvar(T entidade);
 
 		public IEnumerable<T> listarOrdenado();

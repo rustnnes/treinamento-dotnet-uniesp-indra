@@ -1,0 +1,29 @@
+@model Backend.Veiculo
+
+<h1>Cadastro de Veiculo</h1>
+
+@using (Html.BeginForm("Create", "Veiculo", FormMethod.Post)) {
+
+<div class="col-md-3">
+	<div class="form-group">
+		@Html.HiddenFor(x => x.id)
+		@Html.Label("Nome")
+		@Html.TextBoxFor(x => x.nome, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		@Html.Label("Cor")
+		@Html.TextBoxFor(x => x.cor, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		@Html.Label("Placa")
+		@Html.TextBoxFor(x => x.placa, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		@Html.Label("Marca")
+		@Html.DropDownList("idMarca", ViewBag.selectMarcas, "selecione", new { @class = "form-control" })
+	</div>
+
+	<input type="submit" value="Salvar" class="btn btn-primary" />
+</div>
+
+}

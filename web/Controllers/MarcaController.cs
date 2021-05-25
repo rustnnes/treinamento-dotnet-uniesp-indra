@@ -13,7 +13,7 @@ namespace TreinamentoWebApp.Controllers {
 		}
 		// GET: MarcaController
 		public ActionResult Index() {
-			var marcas = this.repositorio.ObterTodos();
+			var marcas = this.repositorio.obterTodos();
 			return View(marcas);
 		}
 
@@ -23,14 +23,13 @@ namespace TreinamentoWebApp.Controllers {
 		}
 
 		private void CarregarDropPais() {
-			var paises = this.repositorioPais.ListarTodos();
+			var paises = this.repositorioPais.listarTodos();
 			var select = new SelectList(paises, "Id", "Nome");
 			ViewBag.selectPaises = select;
 		}
 
 		// GET: MarcaController/Create
 		public ActionResult Create() {
-
 			this.CarregarDropPais();
 			return View();
 		}
@@ -42,15 +41,15 @@ namespace TreinamentoWebApp.Controllers {
 			try {
 				var id = collection["Id"];
 				var marca = new Marca {
-					Id = string.IsNullOrEmpty(id) ? 0 : int.Parse(id),
-					Nome = collection["Nome"],
-					IdPais = int.Parse(collection["IdPais"])
+					id = string.IsNullOrEmpty(id) ? 0 : int.Parse(id),
+					nome = collection["Nome"],
+					idPais = int.Parse(collection["idPais"])
 				};
-				if (marca.Id > 0) {
-					this.repositorio.Atualizar(marca);
+				if (marca.id > 0) {
+					this.repositorio.atualizar(marca);
 				}
 				else {
-					this.repositorio.Adicionar(marca);
+					this.repositorio.adicionar(marca);
 				}
 				return RedirectToAction(nameof(Index));
 			}
@@ -61,7 +60,7 @@ namespace TreinamentoWebApp.Controllers {
 
 		// GET: MarcaController/Edit/5
 		public ActionResult Edit(int id) {
-			var marca = this.repositorio.ObterPorId(id);
+			var marca = this.repositorio.obterPorId(id);
 			this.CarregarDropPais();
 			return View("Create", marca);
 		}
@@ -80,8 +79,8 @@ namespace TreinamentoWebApp.Controllers {
 
 		// GET: MarcaController/Delete/5
 		public ActionResult Delete(int id) {
-			var marcaExcluir = this.repositorio.ObterPorId(id);
-			this.repositorio.Deletar(marcaExcluir);
+			var marcaExcluir = this.repositorio.obterPorId(id);
+			this.repositorio.deletar(marcaExcluir);
 			return RedirectToAction("Index");
 		}
 

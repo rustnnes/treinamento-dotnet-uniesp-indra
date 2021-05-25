@@ -1,7 +1,7 @@
 ﻿@model Backend.Marca
 
 @{
-  var paises = new Backend.PaisRepositorio().ListarTodos().OrderBy(x => x.Nome);
+  var paises = new Backend.PaisRepositorio().listarTodos().OrderBy(x => x.nome);
   //var paisesSelect = new SelectList(paises, "Id", "Nome");
 }
 
@@ -13,9 +13,9 @@
 
 <div class="col-md-3">
   <div class="form-group">
-    @Html.HiddenFor(x => x.Id)
+    @Html.HiddenFor(x => x.id)
     @Html.Label("Nome")
-    @Html.TextBoxFor(x => x.Nome, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.nome, new { @class = "form-control" })
   </div>
   <div class="form-group">
     @Html.Label("Origem")

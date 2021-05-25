@@ -1,0 +1,31 @@
+@model IEnumerable<Backend.Veiculo>
+
+<h1>Veiculo</h1>
+
+@Html.ActionLink("Cadastrar", "Create", "Veiculo", null, new { @class = "btn btn-primary" })
+
+<table class="table table-responsive mt-3">
+	<tr>
+		<th>Id</th>
+		<th>Nome</th>
+		<th>Cor</th>
+		<th>Placa</th>
+		<th>Marca</th>
+		<th></th>
+	</tr>
+	@foreach (var veiculo in Model) {
+	<tr>
+		<td>@veiculo.id</td>
+		<td>@veiculo.nome</td>
+		<td>@veiculo.cor</td>
+		<td>@veiculo.placa</td>
+		<td>@veiculo.marca.nome</td>
+		<td>
+			@Html.ActionLink("Editar", "Edit", new { id = veiculo.id })
+
+			@Html.ActionLink("Excluir", "Delete", new { id = veiculo.id }, new { onclick = "return confirm('Deseja realmente excluir?');" })
+
+		</td>
+	</tr>
+	}
+</table>

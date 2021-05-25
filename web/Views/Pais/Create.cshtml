@@ -2,16 +2,15 @@
 
 <h1>Cadastro de países</h1>
 
-@using(Html.BeginForm("Create", "Pais", FormMethod.Post)) { 
+@using(Html.BeginForm("Create", "Pais", FormMethod.Post)) {
 
-    <div class="col-md-3">
-        <div class="form-group">
-            @Html.HiddenFor(x => x.Id)
-            @Html.Label("Nome")
-            @Html.TextBoxFor(x => x.Nome, new { @class = "form-control" })
-        </div>
+	<div class="col-md-3">
+		<div class="form-group">
+			@Html.HiddenFor(x => x.id)
+			@Html.Label("Nome")
+			@Html.TextBoxFor(x => x.nome, new { @class = "form-control" })
+		</div>
 
-        <input type="submit" value="Salvar" class="btn btn-primary" />
-    </div>
-
+		<input type="submit" value="Salvar" class="btn btn-primary" />
+	</div>
 }

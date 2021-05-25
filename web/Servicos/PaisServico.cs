@@ -9,30 +9,29 @@ namespace TreinamentoWebApp.Servicos {
 			this.repositorio = new PaisRepositorio();
 		}
 
-		public void Excluir(int id) {
-			var paisExcluir = this.repositorio.Obter(id);
-			if (paisExcluir != null) {
-				this.repositorio.Excluir(paisExcluir);
-			}
+		public void excluir(int id) {
+			var paisExcluir = this.repositorio.obter(id);
+			if (paisExcluir != null)
+				this.repositorio.excluir(paisExcluir);
 		}
 
-		public IEnumerable<Pais> ListarOrdenado() {
+		public IEnumerable<Pais> listarOrdenado() {
 			return this
 				.repositorio
-				.ListarTodos()
-				.OrderBy(x => x.Nome)
+				.listarTodos()
+				.OrderBy(x => x.nome)
 				.ToList();
 		}
 
-		public Pais Obter(int id) {
-			return this.repositorio.Obter(id);
+		public Pais obter(int id) {
+			return this.repositorio.obter(id);
 		}
 
-		public void Salvar(Pais pais) {
-			if (pais.Id > 0)
-				this.repositorio.Atualizar(pais);
+		public void salvar(Pais pais) {
+			if (pais.id > 0)
+				this.repositorio.atualizar(pais);
 			else
-				this.repositorio.Cadastrar(pais);
+				this.repositorio.cadastrar(pais);
 		}
 	}
 }

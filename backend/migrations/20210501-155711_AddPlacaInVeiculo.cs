@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Backend.Migrations {
-	public partial class AddPlacaInCarro : Migration {
+	public partial class AddPlacaInVeiculo : Migration {
 		protected override void Up(MigrationBuilder migrationBuilder) {
 			migrationBuilder.AddColumn<string>(
-				name: "Placa",
-				table: "Carro",
+				name: "placa",
+				table: "vehicles",
 				type: "nvarchar(max)",
 				nullable: true
 			);
@@ -13,8 +13,8 @@ namespace Backend.Migrations {
 
 		protected override void Down(MigrationBuilder migrationBuilder) {
 			migrationBuilder.DropColumn(
-				name: "Placa",
-				table: "Carro"
+				name: "placa",
+				table: "vehicles"
 			);
 		}
 	}
