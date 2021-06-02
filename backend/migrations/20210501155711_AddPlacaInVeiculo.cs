@@ -7,7 +7,7 @@ namespace Backend.Migrations {
 				name: "placa",
 				table: "vehicles",
 				type: "nvarchar(max)",
-				nullable: true
+				nullable: false
 			);
 		}
 

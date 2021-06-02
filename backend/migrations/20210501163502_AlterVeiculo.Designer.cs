@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Backend.Migrations {
 	[DbContext(typeof(FrotaContext))]
-	[Migration("20210501-163502_AlterCarro")]
+	[Migration("20210501163502_AlterVeiculo")]
 	partial class AlterVeiculo {
 		protected override void BuildTargetModel(ModelBuilder modelBuilder) {
 #pragma warning disable 612, 618

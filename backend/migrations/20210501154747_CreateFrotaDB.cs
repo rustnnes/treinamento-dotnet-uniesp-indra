@@ -12,7 +12,7 @@ namespace Backend.Migrations {
 					nome = table.Column<string>(type: "nvarchar(max)", nullable: true)
 				},
 				constraints: table => {
-					table.PrimaryKey("PK_Pais", x => x.id);
+					table.PrimaryKey("PK_countries", x => x.id);
 				}
 			);
 
@@ -26,12 +26,12 @@ namespace Backend.Migrations {
 					idPais = table.Column<int>(type: "int", nullable: false)
 				},
 				constraints: table => {
-					table.PrimaryKey("PK_Marca", x => x.id);
+					table.PrimaryKey("PK_marks", x => x.id);
 					table.ForeignKey(
-						name: "FK_Marca_Pais_IdPais",
+						name: "FK_marks_countries_idPais",
 						column: x => x.idPais,
 						principalTable: "countries",
-						principalColumn: "Id",
+						principalColumn: "id",
 						onDelete: ReferentialAction.Cascade);
 				}
 			);
@@ -47,9 +47,9 @@ namespace Backend.Migrations {
 					idMarca = table.Column<int>(type: "int", nullable: false)
 				},
 				constraints: table => {
-					table.PrimaryKey("PK_Carro", x => x.id);
+					table.PrimaryKey("PK_vehicles", x => x.id);
 					table.ForeignKey(
-						name: "FK_Carro_Marca_IdMarca",
+						name: "FK_vehicles_marks_idMarca",
 						column: x => x.idMarca,
 						principalTable: "marks",
 						principalColumn: "id",
@@ -58,13 +58,13 @@ namespace Backend.Migrations {
 			);
 
 			migrationBuilder.CreateIndex(
-				name: "IX_Carro_IdMarca",
+				name: "IX_vehicles_idMarca",
 				table: "vehicles",
 				column: "idMarca"
 			);
 
 			migrationBuilder.CreateIndex(
-				name: "IX_Marca_IdPais",
+				name: "IX_marks_idPais",
 				table: "marks",
 				column: "idPais"
 			);

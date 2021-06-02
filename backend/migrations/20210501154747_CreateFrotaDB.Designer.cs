@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Backend.Migrations {
 	[DbContext(typeof(FrotaContext))]
-	[Migration("20210501-155711_AddPlacaInVeiculo")]
-	partial class AddPlacaInVeiculo {
+	[Migration("20210501154747_CreateFrotaDB")]
+	partial class CreateFrotaDB {
 		protected override void BuildTargetModel(ModelBuilder modelBuilder) {
 #pragma warning disable 612, 618
 			modelBuilder
@@ -27,13 +27,11 @@ namespace Backend.Migrations {
 
 				b.Property<string>("nome").HasColumnType("nvarchar(max)");
 
-				b.Property<string>("placa").HasColumnType("nvarchar(max)");
-
 				b.HasKey("id");
 
 				b.HasIndex("idMarca");
 
-				b.ToTable("vehicles");
+				b.ToTable("carro");
 			});
 
 			modelBuilder.Entity("Backend.Marca", b => {
@@ -59,7 +57,7 @@ namespace Backend.Migrations {
 					.HasColumnType("int")
 					.HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-				b.Property<string>("nome").HasColumnType("nvarchar(max)");
+				b.Property<string>("Nome").HasColumnType("nvarchar(max)");
 
 				b.HasKey("id");
 
