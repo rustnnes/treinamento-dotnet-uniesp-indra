@@ -1,8 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Backend;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using TreinamentoWebApp.Servicos;
 
 namespace TreinamentoWebApp.Controllers {
@@ -14,8 +17,18 @@ namespace TreinamentoWebApp.Controllers {
 			this.servico = servico;
 		}
 		// GET: VeiculoController
-		public ActionResult Index() {
+		public ActionResult Index(string placa, string marca) {
 			var veiculos = this.servico.listarOrdenado();
+			if (!String.IsNullOrEmpty(placa))
+				veiculos = veiculos.Where(
+					v => v.placa.ToUpper()
+											.Replace("-", "")
+											.Contains(placa.ToUpper().Replace("-", ""))
+				);
+			if (!String.IsNullOrEmpty(marca))
+				veiculos = veiculos.Where(
+					v => v.marca.nome.ToUpper().Contains(marca.ToUpper())
+				);
 			return View(veiculos);
 		}
 
@@ -30,11 +43,19 @@ namespace TreinamentoWebApp.Controllers {
 			var marcas = this.marcaRepositorio.obterTodos()
 				.OrderBy(x => x.nome)
 				.ToList();
-			var selectMarcas = new SelectList(marcas, "Id", "Nome");
+			var selectMarcas = new SelectList(marcas, "id", "nome");
 			ViewBag.selectMarcas = selectMarcas;
+		}
+		private void loadDropType() {
+			var types = new List<SelectListItem> {
+				new SelectListItem { Text = "Carro", Selected = true },
+				new SelectListItem { Text = "Moto" }
+			};
+			ViewBag.selectType = new SelectList(types, "Text", "Text");
 		}
 		public ActionResult Create() {
 			this.CarregarDropMarca();
+			this.loadDropType();
 
 			return View();
 		}
@@ -44,16 +65,19 @@ namespace TreinamentoWebApp.Controllers {
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(IFormCollection collection) {
 			try {
-				var id = collection["Id"];
-				var Veiculo = new Veiculo {
+				var id = collection["id"];
+				var ano = collection["ano"];
+				var veiculo = new Veiculo {
 					id = string.IsNullOrEmpty(id) ? 0 : int.Parse(id),
-					cor = collection["Cor"],
-					idMarca = int.Parse(collection["IdMarca"]),
-					nome = collection["Nome"],
-					placa = collection["Placa"]
+					cor = collection["cor"],
+					ano = string.IsNullOrEmpty(ano) ? 0 : int.Parse(ano),
+					idMarca = int.Parse(collection["idMarca"]),
+					nome = collection["nome"],
+					placa = collection["placa"],
+					tipo = collection["tipo"]
 				};
 
-				this.servico.salvar(Veiculo);
+				this.servico.salvar(veiculo);
 				return RedirectToAction(nameof(Index));
 			}
 			catch {
@@ -65,6 +89,7 @@ namespace TreinamentoWebApp.Controllers {
 		public ActionResult Edit(int id) {
 			var VeiculoEdit = this.servico.obter(id);
 			this.CarregarDropMarca();
+			this.loadDropType();
 			return View("Create", VeiculoEdit);
 		}
 
