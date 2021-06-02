@@ -14,7 +14,6 @@ namespace Backend {
 				this.context.SaveChanges();
 			}
 			catch (Exception ex) {
-
 				throw new Exception($"Falha ao cadastrar: {ex.Message}");
 			}
 		}
@@ -29,7 +28,6 @@ namespace Backend {
 				this.context.SaveChanges();
 			}
 			catch (Exception ex) {
-
 				throw new Exception($"Falha ao atualizar: {ex.Message}");
 			}
 		}
@@ -40,7 +38,6 @@ namespace Backend {
 				this.context.SaveChanges();
 			}
 			catch (Exception ex) {
-
 				throw new Exception($"Não foi possível excluir a marcar {entidade.nome}: {ex.Message}");
 			}
 		}

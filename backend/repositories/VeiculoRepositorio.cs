@@ -64,13 +64,13 @@ namespace Backend {
 			return this.context.Veiculos.ToList();
 		}
 
-		public void adicionar(Veiculo Veiculo) {
+		public void adicionar(Veiculo veiculo) {
 			try {
-				this.context.Veiculos.Add(Veiculo);
+				this.context.Veiculos.Add(veiculo);
 				this.context.SaveChanges();
 			}
 			catch (Exception ex) {
-				throw new Exception($"Falha ao inserir um Veiculo:{ex.Message}");
+				throw new Exception($"Falha ao inserir um veiculo:{ex.Message}");
 			}
 		}
 
