@@ -15,10 +15,10 @@ namespace TreinamentoApplication {
 			// Veiculo veiculo = new Veiculo();
 
 			//populando a lista...
-			listVeiculo.Add(new Veiculo("verde", "fusca", 1));
-			listVeiculo.Add(new Veiculo("azul", "fusca", 1));
-			listVeiculo.Add(new Veiculo("azul", "vectra", 2));
-			listVeiculo.Add(new Veiculo("branco", "gol", 1));
+			listVeiculo.Add(new Veiculo("verde", "fusca", 1, 2010, "Carro"));
+			listVeiculo.Add(new Veiculo("azul", "fusca", 1, 2010, "Carro"));
+			listVeiculo.Add(new Veiculo("azul", "vectra", 2, 2010, "Carro"));
+			listVeiculo.Add(new Veiculo("branco", "gol", 1, 2010, "Carro"));
 			//instanciando um objeto Veiculo utilizando um inicializado de objetos
 			//ao invés de invocar um construtor
 			//listVeiculo.Add(new Veiculo
