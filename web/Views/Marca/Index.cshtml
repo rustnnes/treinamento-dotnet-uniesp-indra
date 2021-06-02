@@ -17,12 +17,11 @@
 		<td>@marca.nome</td>
 		<td>@marca.pais.nome</td>
 		<td>
-				@Html.ActionLink("Editar", "Edit", new { id = marca.id })
-				@if (!marca.veiculos.Any()) {
-					@Html.ActionLink("Excluir", "Delete", new { id = marca.id }, new { onclick = "return confirm('Deseja realmente excluir?');" })
-				}
-
+			@Html.ActionLink("Editar", "Edit", new { id = marca.id })
+			@if (!marca.veiculos.Any()) {
+				@Html.ActionLink("Excluir", "Delete", new { id = marca.id }, new { onclick = "return confirm('Deseja realmente excluir?');" })
+			}
 		</td>
 	</tr>
-		}
+	}
 </table>

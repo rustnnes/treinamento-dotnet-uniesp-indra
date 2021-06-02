@@ -24,7 +24,7 @@ namespace TreinamentoWebApp.Controllers {
 
 		private void CarregarDropPais() {
 			var paises = this.repositorioPais.listarTodos();
-			var select = new SelectList(paises, "Id", "Nome");
+			var select = new SelectList(paises, "id", "nome");
 			ViewBag.selectPaises = select;
 		}
 
@@ -39,10 +39,10 @@ namespace TreinamentoWebApp.Controllers {
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(IFormCollection collection) {
 			try {
-				var id = collection["Id"];
+				var id = collection["id"];
 				var marca = new Marca {
 					id = string.IsNullOrEmpty(id) ? 0 : int.Parse(id),
-					nome = collection["Nome"],
+					nome = collection["nome"],
 					idPais = int.Parse(collection["idPais"])
 				};
 				if (marca.id > 0) {
