@@ -15,6 +15,14 @@
 		@Html.TextBoxFor(x => x.cor, new { @class = "form-control" })
 	</div>
 	<div class="form-group">
+		@Html.Label("Tipo")
+		@Html.DropDownList("tipo", ViewBag.selectType, "selecione", new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		@Html.Label("Ano")
+		@Html.TextBoxFor(x => x.ano, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
 		@Html.Label("Placa")
 		@Html.TextBoxFor(x => x.placa, new { @class = "form-control" })
 	</div>

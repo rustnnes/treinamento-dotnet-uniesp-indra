@@ -1,14 +1,36 @@
 @model IEnumerable<Backend.Veiculo>
 
+@{
+	ViewBag.Title = "Index";
+}
+
 <h1>Veiculo</h1>
 
 @Html.ActionLink("Cadastrar", "Create", "Veiculo", null, new { @class = "btn btn-primary" })
+
+@using (Html.BeginForm("Index", "Veiculo", FormMethod.Get)) {
+	<div class="row">
+		<div class="col-4">
+			@Html.Label("Placa")
+			@Html.TextBox("placa", "", new { placeholder = "Buscar placa" })
+		</div>
+		<div class="col-4">
+			@Html.Label("Marca")
+			@Html.TextBox("marca", "", new { placeholder = "Buscar marca" })
+		</div>
+		<div class="col-1">
+			<input type="submit" value="Filtrar" class="btn btn-primary" />
+		</div>
+	</div>
+}
 
 <table class="table table-responsive mt-3">
 	<tr>
 		<th>Id</th>
 		<th>Nome</th>
 		<th>Cor</th>
+		<th>Tipo</th>
+		<th>Ano</th>
 		<th>Placa</th>
 		<th>Marca</th>
 		<th></th>
@@ -18,6 +40,8 @@
 		<td>@veiculo.id</td>
 		<td>@veiculo.nome</td>
 		<td>@veiculo.cor</td>
+		<td>@veiculo.tipo</td>
+		<td>@veiculo.ano</td>
 		<td>@veiculo.placa</td>
 		<td>@veiculo.marca.nome</td>
 		<td>
