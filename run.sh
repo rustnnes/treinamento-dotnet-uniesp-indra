@@ -10,4 +10,4 @@ cd backend
 dotnet ef database update
 cd ..
 
-dotnet run --project web/web.csproj
+dotnet watch run --project web/web.csproj
